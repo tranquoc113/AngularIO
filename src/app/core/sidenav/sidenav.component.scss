@@ -1,0 +1,204 @@
+@import '../../../scss/variables';
+
+$sidenav-width: 15rem;
+$mat-toolbar-height-desktop: 64px !default;
+$mat-toolbar-height-mobile-portrait: 56px !default;
+$mat-toolbar-height-mobile-landscape: 48px !default;
+$compact-sidebar-width: 100px !default;
+
+@mixin flexbox {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+@mixin flex-direction($value: row) {
+  @if $value == row-reverse {
+    -webkit-box-direction: reverse;
+    -webkit-box-orient: horizontal;
+  } @else if $value == column {
+    -webkit-box-direction: normal;
+    -webkit-box-orient: vertical;
+  } @else if $value == column-reverse {
+    -webkit-box-direction: reverse;
+    -webkit-box-orient: vertical;
+  } @else {
+    -webkit-box-direction: normal;
+    -webkit-box-orient: horizontal;
+  }
+  -webkit-flex-direction: $value;
+  -moz-flex-direction: $value;
+  -ms-flex-direction: $value;
+  flex-direction: $value;
+}
+
+mat-sidenav.notification-panel {
+  margin: 0;
+  max-width: 320px;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  mat-tab-group, .mat-tab-body-wrapper, mat-tab-body, .mat-tab-body-content {
+    height: 100%;
+  }
+  .scroll {
+    height: 100%;
+    overflow-x: hidden;
+    overflow-y: auto;
+    position: absolute;
+    width: 100%;
+    -webkit-overflow-scrolling: touch;
+  }
+}
+
+mat-sidenav-container {
+  margin: 0;
+  width: 100%;
+  height: 100%;
+  @include flexbox;
+  @include flex-direction(row);
+}
+
+.app-sidenav-container {
+  height: calc(100vh - 64px);
+  @media #{$max-width-600} {
+    height: calc(100vh - 56px);
+  }
+  @media #{$max-width-960} {
+    height: calc(100vh - 48px);
+  }
+}
+
+mat-sidenav.app-sidenav-sidebar {
+  width: $sidenav-width;
+  box-shadow: 3px 0 6px rgba(0, 0, 0, .24);
+  .mat-list-item {
+    .mat-list-item-content {
+      display: block;
+      height: auto; // max-height: 48px;
+      overflow: hidden;
+      padding: 0;
+      transition: max-height 0.3s cubic-bezier(0.35, 0, 0.25, 1);
+    }
+    background-color: transparent;
+    transition: background-color 0.3s cubic-bezier(0.35, 0, 0.25, 1);
+    mat-icon:not(.menu-caret) {
+      margin-right: 24px;
+    }
+    a {
+      display: flex;
+      box-sizing: border-box;
+      flex-direction: row;
+      align-items: center;
+      height: 48px;
+      padding: 0 16px;
+      &.active {
+        background: rgb(242, 246, 249);
+        color: #1976d2;
+      }
+    }
+  }
+}
+
+.app-sidenav-content {
+  width: 100%;
+  min-height: 100%;
+  display: flex;
+  flex-direction: column; // The rule will match the element following the router-outlet which will be the routed component.
+  router-outlet + * {
+    flex-grow: 1;
+  }
+}
+
+.mat-dialog-container {
+  background: #fff;
+  border-radius: 2px;
+}
+
+mat-list,
+mat-nav-list {
+  a[mat-list-item],
+  mat-list-item {
+    color: rgba(0, 0, 0, 0.87);
+  }
+}
+
+.mat-list-item mat-icon[mat-list-avatar],
+mat-list-item mat-icon[mat-list-avatar] {
+  display: flex;
+  align-items: center;
+  align-content: center;
+  justify-content: center;
+}
+
+mat-list,
+mat-nav-list {
+  a[mat-list-item] [mat-list-avatar],
+  mat-list-item [mat-list-avatar] {
+    min-width: 40px;
+  }
+}
+
+mat-list,
+mat-nav-list {
+  a[mat-list-item] .mat-list-item-content,
+  mat-list-item .mat-list-item-content {
+    font-size: 0.875rem !important;
+  }
+}
+
+mat-divider {
+  border-top: 1px solid rgba(0, 0, 0, 0.12) !important;
+}
+
+mat-icon.status{
+  width: 16px;
+  height: 16px;
+  position: absolute;
+  top: 36px;
+  left: 44px;
+  font-size: 16px;
+  &.online{
+    color: #4caf50;
+    &:before {
+    content: "check_circle";
+  }
+  }
+  &.offline {
+    color: #646464;
+    background-color: #fff;
+    border-radius: 50%;
+    &:before {
+      content: "not_interested";
+    }
+  }
+  &.do-not-disturb {
+    color: #f44336;
+    &:before {
+      content: "do_not_disturb_on";
+    }
+  }
+  &.away {
+    background-color: #ffc107;
+    color: #fff;
+    border-radius: 50%;
+    &:before {
+      content: "access_time";
+    }
+  }
+}
+.mobile{
+  color: #999;
+  >mat-icon{
+    font-size: 13px;
+    vertical-align: -3px;
+    width: 13px;
+    height: 13px;
+  }
+}
+
+mat-sidenav.app-sidenav-sidebar .mat-nav-list .mat-list-item {
+  height: auto !important;
+}

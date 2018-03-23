@@ -1,0 +1,64 @@
+<mat-nav-list appAccordion class="navigation">
+    <mat-list-item appAccordionLink>
+        <a routerLink="home" routerLinkActive="active">
+            <mat-icon>home</mat-icon>
+            <span>{{'MENU.HOME' | translate}}</span>
+        </a>
+    </mat-list-item>
+    <mat-list-item appAccordionLink>
+        <a routerLink="employee" routerLinkActive="active">
+            <mat-icon>home</mat-icon>
+            <span>{{'MENU.EMPLOYEE' | translate}}</span>
+        </a>
+    </mat-list-item>
+
+    <mat-list-item appAccordionLink *roleAccess="'sub_admin'">
+        <a routerLink="employee" routerLinkActive="active">
+            <mat-icon>shopping_basket</mat-icon>
+            <span>Nhân Sự </span>
+        </a>
+    </mat-list-item>
+    <!--mat-list-item appAccordionLink *roleAccess="'sub_admin'">
+    <a routerLink="marketplace" routerLinkActive="active">
+      <mat-icon>shopping_basket</mat-icon>
+      <span>{{'MENU.MARKETPLACE' | translate}}</span>
+    </a>
+  </mat-list-item>
+
+  <mat-list-item appAccordionLink>
+    <a routerLink="calendar" routerLinkActive="active">
+      <mat-icon>date_range</mat-icon>
+      <span>{{'MENU.CALENDAR' | translate}}</span>
+    </a>
+  </mat-list-item>
+
+  <mat-list-item *ngIf="!isCommunity" appAccordionLink>
+    <a routerLink="documents" routerLinkActive="active">
+      <mat-icon>folder_shared</mat-icon>
+      <span>{{'MENU.DOCUMENTS' | translate}}</span>
+    </a>
+  </mat-list-item>
+
+  <mat-list-item *roleAccess="'sub_admin'" appAccordionLink>
+    <a routerLink="user-manage" routerLinkActive="active">
+      <mat-icon>perm_data_setting</mat-icon>
+      <span>{{'MENU.ADMIN' | translate}}</span>
+    </a>
+  </mat-list-item>
+
+  <mat-list-item appAccordionLink *ngFor="let app of applications">
+    <a (click)="openAppWithSSO(app.homepage)" routerLinkActive="active">
+      <mat-icon>settings_applications</mat-icon>
+      <span class="text-capitalize">{{app.name}}</span>
+    </a>
+  </mat-list-item>
+
+
+  <mat-list-item appAccordionLink *ngIf="isCommunity">
+    <a href="https://calista.inetcloud.vn/calista/smartcloud/calista/page/signin.cpx">
+      <mat-icon>business</mat-icon>
+      <span>{{'MENU.REGISTER' | translate}}</span>
+    </a>
+  </mat-list-item-->
+
+</mat-nav-list>

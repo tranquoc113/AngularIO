@@ -1,0 +1,4 @@
+<div [ngClass]="{'collapsed-sidebar': options.collapsed, 'compact-sidebar': options.compact }">
+    <app-navbar (toggle)="toggle()" (toggleNotify)="sidenav.toogleNotify()" (toggleChat)="sidenav.toogleChat()"></app-navbar>
+    <app-sidenav></app-sidenav>
+</div>

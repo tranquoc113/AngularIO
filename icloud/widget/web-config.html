@@ -1,0 +1,22 @@
+<script type="text/javascript">
+  iNet.prefix="$ctx.site.prefix";
+  iNet.firmPrefix="$ctx.firmPrefix";
+  iNet.extension = "$ctx.extension()";
+  iNet.path = "$ctx.path()";
+  iNet.username = "$ctx.usercode()";
+  iNet.displayName = "$ctx.getUsername()";
+  iNet.fileServer = '$ctx.mediaRoot("")';
+  iNet.imgFolder = '$ctx.resource("/images/starter/")';
+  iNet.jsFolder = '$ctx.mediaRoot("js")'.indexOf('.mediaRoot')>-1 ? '$ctx.path()/js/starter/': '$ctx.mediaRoot("js")/starter/';
+  iNet.apiServer= '';
+  iNet.externalUser = '$ctx.externalUser()';
+  iNet.webContext = '$ctx.webcontext()';
+  if(iNet.firmPrefix === iNet.webContext) {
+    iNet.firmPrefix = 'smartcloud';
+  }
+  iNet.webchat = '$ctx.global("unifiedpush").webchat';
+
+  iNet.organId = "$ctx.organization().organId";
+  iNet.orgName = "$ctx.organization().orgName";
+
+</script>

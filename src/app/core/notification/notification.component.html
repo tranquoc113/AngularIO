@@ -1,0 +1,45 @@
+<mat-tab-group *ngIf="!isOpenChat" [selectedIndex]="1">
+  <mat-tab [disabled]="true">
+    <ng-template matTabLabel>Hôm nay</ng-template>
+    <div class="scroll">
+      <mat-nav-list>
+        <h3 mat-subheader class="text-uppercase font-weight-bold">Sắp diễn ra</h3>
+        <mat-list-item>
+          <mat-icon mat-list-avatar>av_timer</mat-icon>
+          <a matLine href="javascript:;">Hướng dẫn sử dụng Angular Material</a>
+          <p matLine class="mat-text-muted text-md">3:20 CH</p>
+        </mat-list-item>
+        <mat-list-item>
+          <mat-icon mat-list-avatar>av_timer</mat-icon>
+          <a matLine href="javascript:;">Có cuộc họp báo cáo tiến độ công việc</a>
+          <p matLine class="mat-text-muted text-md">6:00 CH</p>
+        </mat-list-item>
+        <mat-divider class="mt-xs mb-xs"></mat-divider>
+        <h3 mat-subheader class="text-uppercase font-weight-bold">Đã và đang diễn ra</h3>
+        <mat-list-item>
+          <mat-icon mat-list-avatar>done</mat-icon>
+          <a matLine href="javascript:;">Hướng dẫn Angular 5.0</a>
+          <p matLine class="mat-text-muted text-md">2:45 CH</p>
+        </mat-list-item>
+      </mat-nav-list>
+    </div>
+  </mat-tab>
+  <mat-tab>
+    <ng-template matTabLabel>Thông báo</ng-template>
+
+  </mat-tab>
+</mat-tab-group>
+<mat-tab-group *ngIf="isOpenChat" [selectedIndex]="0" (selectedTabChange)="onSelectedChatTabChange($event)">
+  <mat-tab>
+    <ng-template matTabLabel>Tất cả</ng-template>
+    <div class="scroll">
+
+    </div>
+  </mat-tab>
+  <mat-tab>
+    <ng-template matTabLabel>Đang trực tuyến</ng-template>
+    <div class="scroll" *ngIf="chatTabIndex==1">
+
+    </div>
+  </mat-tab>
+</mat-tab-group>

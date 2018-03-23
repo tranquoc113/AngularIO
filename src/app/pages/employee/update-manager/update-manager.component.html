@@ -1,0 +1,67 @@
+<div class="container">
+    <div class="row">
+
+        <div class="col-sm">
+            <!-- <div [hidden]="submitted"> -->
+            <h1>Manager Form</h1>
+
+            <form (ngSubmit)="saveManager(employees)">
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+
+                        <span class="input-group-text" id="basic-addon1">Manager</span>
+
+                        <select class="form-control" lass="form-control" id="employeeManageselectId" required [(ngModel)]="employeeManageselectId" name="employeeManageselectId">
+                            <option *ngFor="let item of (employeeManagers|filterManager:rowterid)" [value]="item.id">{{item.lastName}}{{employeeManageselectId}}</option>
+                </select>
+                    </div>
+                </div>
+
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon1">Name</span>
+                    </div>
+                    <input type="text" disabled class="form-control" id="firstName" name="firstName" [(ngModel)]="employees.firstName" aria-describedby="basic-addon1" ngModel>
+                    <input type="text" disabled class="form-control" id="lastName" name="lastName" [(ngModel)]="employees.lastName" aria-describedby="basic-addon1" ngModel>
+                </div>
+
+
+
+
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon1">Giới Tính</span>
+                    </div>
+                    <label class="form-control">{{employees.gender ? 'Nữ' : 'Nam'}}</label>
+                    <!-- <div class="form-control" id="gender" name="gender" [(ngModel)]="employees.gender" aria-describedby="basic-addon1" ngModel></div> -->
+
+                </div>
+
+                <div>
+                    <button type="submit" class="btn btn-danger" (click)="back()">Quay đầu là bờ</button>
+                    <button type="submit" class="btn btn-success">Update Manager</button>
+                </div>
+            </form>
+
+        </div>
+
+        <div class="col-sm">
+            One of three columns
+        </div>
+    </div>
+
+</div>
+
+
+
+<ng-template #template>
+    <div>
+
+        <div class="modal-body text-center">
+            <p>Không tự quản lý?</p>
+            <button type="button" class="btn btn-default" (click)="hide()">Yes</button>
+
+        </div>
+    </div>
+
+</ng-template>

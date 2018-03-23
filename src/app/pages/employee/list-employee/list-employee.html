@@ -1,0 +1,102 @@
+<div class="container">
+    <h2 appEmployee>My Employee</h2>
+
+    <div class="button-row">
+        <a mat-raised-button color="warn" routerLink="/create-employee">Create Employee</a>
+        <button type="button" class="btn btn-warning" (click)="deleteMany()" *ngIf="showbtn">Delete</button>
+    </div>
+    <div class="table-responsive">
+        <table class="table ">
+            <!-- table-hover -->
+            <thead>
+                <tr>
+                    <th scope="col">
+                        <div class="custom-control custom-checkbox">
+                            <input type="checkbox" class="custom-control-input" id="checkAll" [checked]="checkedAllITem" (change)="checkAll($event)" [(ngModel)]="checkedAllITem">
+                            <!-- <input type="checkbox" class="custom-control-input" id="checkAll" name="sizecb[]" [checked]="isAllChecked()" (change)="checkAll($event)"> -->
+                            <label class="custom-control-label" for="checkAll"></label>
+                        </div>
+                    </th>
+                    <th scope="col">uuId</th>
+
+                    <th scope="col">First Name</th>
+                    <th scope="col">gender</th>
+                    <th scope="col">phone</th>
+                    <th scope="col">address</th>
+                    <th scope="col">salary</th>
+                    <th scope="col">state</th>
+
+
+                    <th scope="col">responsibilities</th>
+                    <th scope="col">Quản lý bới</th>
+                    <th scope="col">Action</th>
+
+                </tr>
+            </thead>
+            <tbody *ngFor="let em of employees">
+                <tr class="item" employeeHover [role]="funtionManager(em.id)">
+                    <th>
+                        <div class="custom-control custom-checkbox">
+                            <input type="checkbox" [checked]="em.state" [(ngModel)]="em.state" (click)="checkItem(em.id)" class="custom-control-input" id="{{em.id}}" value="em.id">
+                            <!-- <input type="checkbox" class="custom-control-input" [checked]="all" id="em.id" name="sizecb[]" value="{{em.id}}" [(ngModel)]="em.state"> -->
+                            <label class="custom-control-label" for="{{em.id}}"></label>
+                        </div>
+
+                    </th>
+                    <th scope="row"> {{em.id}}</th>
+                    <th scope="row"> {{em.firstName}}{{em.lastName}}</th>
+                    <td scope="col">{{em.gender ? 'Nữ' : 'Nam'}}</td>
+                    <td scope="col">{{em.phone}}</td>
+
+                    <td scope="col">{{em.address}}</td>
+                    <td scope="col">{{em.salary}}</td>
+                    <td scope="col">{{em.state}}</td>
+
+                    <td scope="col">{{em.responsibilities}}
+                        <a (click)=data(em.responsibilities)></a>
+                    </td>
+                    <td scope="col" *ngIf="em.manager">{{em.manager.firstName}} {{em.manager.lastName}}
+
+
+                    </td>
+                    <td scope="col" *ngIf="!em.manager"></td>
+
+
+
+                    <td>
+
+                        <button type="button" class="btn btn-primary" (click)="openModel({id:em.id,firstName:em.firstName,lastName:em.lastName,val:values})">Delete</button>
+
+                        <a mat-raised-button color="primary" routerLink="/employee/{{em.id}}"> update</a>
+                        <a class="btn btn-warning" routerLink="/updateManager/{{em.id}}" *ngIf="em.manager"> Manager</a>
+
+
+
+                        <a mat-raised-button routerLink="/updateManager/{{em.id}}" *ngIf="!em.manager"> Manager</a>
+
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<app-delete-employee [data]="inputVariable" (change)=onDelete($event) [callback]="callback">
+</app-delete-employee>
+
+all{{checkedItem}} btn{{showbtn}} item {{valiableDelete}}-- {{callback}} callback
+<!-- (click)="delete(em)" -->
+(click)="delete(hero)"
+<br><br>
+<pre>{{message}}</pre>
+
+<div>
+    <input type="radio" name="colors" (click)="color='lightgreen'">Green
+    <input type="radio" name="colors" (click)="color='yellow'">Yellow
+    <input type="radio" name="colors" (click)="color='cyan'">Cyan
+</div>
+<!-- <p [appEmployee]="color">Highlight me!</p>
+
+<p [appEmployee]="color" defaultColor="violet">
+    Highlight me too!
+</p> -->

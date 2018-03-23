@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Starter Project</title>
+  <base href="/">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+  <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
+
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" rel="stylesheet">
+
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">  <link href="http://cdn.inetcloud.vn/data/api/css/grid.min.css" rel="stylesheet">
+
+  <script src="http://cdn.inetcloud.vn/data/api/lib/jquery-3.2.1.min.js"></script>
+  <script src="http://cdn.inetcloud.vn/data/api/lib/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+  <script type="text/javascript" src="http://cdn.inetcloud.vn/data/api/lib/inet-core.min.js"></script>
+  <script type="text/javascript" src="http://cdn.inetcloud.vn/data/api/lib/inet-utilities.min.js"></script>
+  <script type="text/javascript" src="http://cdn.inetcloud.vn/data/api/lib/grid-3.0.min.js"></script>
+
+  <script type="text/javascript">
+
+    // Config server here
+    var pathServer = 'https://calista.inetcloud.vn/collaboration/vinaco';
+    iNet.webchat = 'http://vertx.inetcloud.vn:8082/eventbus';
+
+    // Don't need config anything else`
+    var arrPath = pathServer.split('/');
+    var domainPath = arrPath.slice(0, 3).join('/');
+
+    iNet.prefix= "vinaco";
+    iNet.firmPrefix= arrPath[4];
+    iNet.extension = ".cpx";
+
+    iNet.path = "/" + arrPath[3];
+
+    iNet.imgFolder = '//media.inetcloud.vn/images/unicorn';
+    iNet.jsFolder = '';
+
+    iNet.getUrl = function (url){
+      return domainPath + iNet.path + '/smartcloud/' + url + iNet.extension;
+    };
+    iNet.getPUrl = function (url) {
+      return domainPath + iNet.path + '/' + iNet.firmPrefix + '/' + url + iNet.extension;
+    };
+
+    //Fake permission data for UI
+    iNet.permission = {
+      'community': true,
+      'user': true,
+      'sub_admin': true
+    };
+  </script>
+</head>
+
+<body>
+  <app-root>
+    <div class="loading"></div>
+  </app-root>
+</body>
+
+</html>

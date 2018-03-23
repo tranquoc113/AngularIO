@@ -1,0 +1,16 @@
+#hasRole("$community")
+    #set($community = true)
+#end
+#hasRole("$user")
+    #set($user = true)
+#end
+#hasRole("$sub_admin")
+    #set($sub_admin = true)
+#end
+<script type="text/javascript">
+    iNet.permission = {
+      'community': '$community',
+      'user': '$community',
+      'sub_admin': '$sub_admin'
+    }
+</script>

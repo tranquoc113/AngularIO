@@ -1,0 +1,48 @@
+<mat-toolbar class="main-header mat-elevation-z6" color="acumatica">
+    <button mat-icon-button (click)="toggleSidebar()"><mat-icon>menu</mat-icon></button>
+    <a class="navbar-brand" href="{{homepage}}" target="_blank">{{brandName}}</a>
+
+    <a routerLink="/employee">Nhân Sự</a>
+
+    <router-outlet></router-outlet>
+    <span class="fill-remaining-space"></span>
+    <span *roleAccess="'user'">
+        
+           
+        
+    <button (click)="toggleChat()" mat-icon-button class="ml-xs overflow-visible">
+      <mat-icon>chat</mat-icon>
+    </button>
+
+    <button (click)="toggleNotify()" mat-icon-button class="ml-xs overflow-visible">
+      <span *ngIf="messageCount>0" class="badge badge-danger notification-label">{{messageCount}}</span>
+    <mat-icon>notifications_active</mat-icon>
+    </button>
+    <button [matMenuTriggerFor]="user" mat-icon-button class="ml-xs">
+      <mat-icon>person</mat-icon>
+    </button>
+    <mat-menu #user="matMenu" x-position="before">
+        <!--button routerLink="user-profile" mat-menu-item>
+        <mat-icon>account_box</mat-icon>{{'MENU.USER_PROFILE' | translate}}
+      </button-->
+        <button mat-menu-item [matMenuTriggerFor]="languageMenu"><mat-icon>language</mat-icon>{{'MENU.LANGUAGE' | translate}}</button>
+        <button mat-menu-item disabled>
+        <mat-icon>settings</mat-icon>{{'MENU.CONFIG' | translate}}
+      </button>
+        <button mat-menu-item disabled>
+        <mat-icon>info</mat-icon>{{'MENU.ABOUT' | translate}}
+      </button>
+        <mat-divider></mat-divider>
+        <button mat-menu-item (click)="logout()">
+        <mat-icon>exit_to_app</mat-icon>{{'MENU.LOGOUT' | translate}}
+      </button>
+    </mat-menu>
+    <mat-menu #languageMenu="matMenu">
+        <button mat-menu-item *ngFor="let lang of langs" (click)="onChangeLanguage(lang)">
+        <mat-icon *ngIf="currentLanguage==lang">check</mat-icon>
+        <mat-icon *ngIf="currentLanguage!=lang">language</mat-icon>
+        {{ lang | translate }}
+      </button>
+    </mat-menu>
+    </span>
+</mat-toolbar>

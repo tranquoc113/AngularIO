@@ -1,0 +1,14 @@
+<ng-template #template>
+    <div *ngIf="data">
+
+        <div class="modal-body text-center">
+            <p>Do you want delete {{data.firstName}} {{data.lastName}} ?</p>
+            <button type="button" class="btn btn-default" (click)="deleteEmployee(data.id)">Yes</button>
+            <button type="button" class="btn btn-primary" (click)="hide()">No</button>
+        </div>
+    </div>
+
+</ng-template>
+
+
+<div>or true false==============={{checkedItem}}</div>

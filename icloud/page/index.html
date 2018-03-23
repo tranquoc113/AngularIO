@@ -1,0 +1,35 @@
+#html({"scriptDefault":"off", "inherit":"true","secure":"community"})
+#defined("link",{"rel":"shortcut icon", "href":'$ctx.resource("/images/starter/starter.png")'})
+
+<head>
+    <meta charset="UTF-8">
+    <title>Starter</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!--link rel="shortcut icon" href='$ctx.resource("/images/unicorn/starter.png")'-->
+</head>
+<app-root>
+    <div class="loading"></div>
+</app-root>
+#theme("/common/css/material")
+#theme("/common/css/bootstrap.min")
+#theme("/common/css/font-awesome")
+#theme("/common/css/grid.min")
+
+#script("/js/common/jquery/jquery-3.2.1.min.js")
+#script("/js/common/bootstrap/bs4/plugins/popper.min.js")
+#script("/js/common/bootstrap/bs4/bootstrap.min.js")
+
+#script("/js/common/inet/lib/inet-core.min.js")
+#script("/js/common/inet/lib/inet-utilities.min.js")
+#script("/js/common/inet/lib/grid-3.0.min.js")
+
+#widget("/starter/widget/web-config")
+#widget("/starter/widget/permission")
+
+#script("/js/starter/{inline}", "bottom")
+#script("/js/starter/{polyfills}", "bottom")
+#script("/js/starter/{styles}", "bottom")
+#script("/js/starter/{vendor}", "bottom")
+#script("/js/starter/{main}", "bottom")
+#end

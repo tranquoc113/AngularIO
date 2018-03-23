@@ -1,0 +1,13 @@
+<mat-sidenav-container #container class="app-sidenav-container">
+  <mat-sidenav #sidenav class="sidebar-panel" position="start" [mode]="isOver() ? 'over' : 'side'" [opened]="!isOver()" (open)="isOpen=true"
+               (close)="isOpen=false" (mouseover)="menuMouseOver()" (mouseout)="menuMouseOut()" appPs>
+    <app-menu></app-menu>
+  </mat-sidenav>
+  <mat-sidenav *roleAccess="'user'" #notification position="end" class="notification-panel" [mode]="isSafari() ? 'push' : 'over'"
+               [opened]="isOpenNotify" (close)="isOpenNotify=isOpenChat=false">
+    <app-notification [openNotify]="isOpenNotify" [openChat]="isOpenChat"></app-notification>
+  </mat-sidenav>
+  <div #appContain class="app-sidenav-content">
+    <router-outlet></router-outlet>
+  </div>
+</mat-sidenav-container>
